@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head th:fragment="head">
+
+    <!-- Bootstrap stylesheets and script -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+
+    <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
+</head>
+
+<body>
+
+    <div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a th:href="@{/}" class="navbar-brand">TechJobs</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{/search}">Search</a></li>
+                    <li><a th:href="@{/list}">List</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <table th:fragment="jobLoop"  th:each="job : ${jobs}" class="job-listing">
+
+        <tr>
+            <td th:text="ID"></td>
+            <td th:text="${job.id}"></td>
+        </tr>
+        <tr>
+            <td th:text="Name"></td>
+            <td th:text="${job.name}"></td>
+        </tr>
+        <tr>
+            <td th:text="Employer"></td>
+            <td th:text="${job.employer}"></td>
+        </tr>
+        <tr>
+            <td th:text="Location"></td>
+            <td th:text="${job.location}"></td>
+        </tr>
+        <tr>
+            <td>Position Type</td>
+            <td th:text="${job.positionType}"></td>
+        </tr>
+        <tr>
+            <td th:text="Skill"></td>
+            <td th:text="${job.coreCompetency}"></td>
+        </tr>
+    </table>
+</body>
+</html>
